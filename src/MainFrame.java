@@ -117,6 +117,11 @@ public class MainFrame extends JFrame
                         InitiativePanel addPanel = new InitiativePanel();
                         MainFrame.this.initiativePanels.add(addPanel);
                         MainFrame.this.initiativesPanel.add(addPanel.getPanel());
+                        if(turnPanel == -1)
+                        {
+                            addPanel.setCurrentlyTurn(true);
+                            turnPanel = 0;
+                        }
                         break;
 
                     case "Duplicate":
@@ -130,10 +135,15 @@ public class MainFrame extends JFrame
                         break;
 
                     case "Remove":
-                        if(MainFrame.this.initiativePanels.size() > 1)
+                        if(MainFrame.this.initiativePanels.size() >= 1)
                         {
                             MainFrame.this.initiativesPanel.remove(turnPanel);
                             initiativePanels.remove(turnPanel);
+                            if(initiativePanels.size() == 0)
+                            {
+                                turnPanel = -1;
+                                break;
+                            }
                             turnPanel %= initiativePanels.size();
                             initiativePanels.get(turnPanel).setCurrentlyTurn(true);
                         }
@@ -181,8 +191,6 @@ public class MainFrame extends JFrame
                             objectInputStream.close();
                             fileInputStream.close();
                         } catch (Exception ex)  { ex.printStackTrace(); }
-                        initiativesPanel.removeAll();
-                        initiativePanels.clear();
                         for(InitiativeData datum : encounter)
                         {
                             InitiativePanel p = new InitiativePanel();
@@ -191,6 +199,7 @@ public class MainFrame extends JFrame
                             initiativesPanel.add(p.getPanel());
                             if(p.getCurrentlyTurn())
                             {
+                                initiativePanels.get(turnPanel).setCurrentlyTurn(false);
                                 turnPanel = initiativePanels.size() - 1;
                             }
                         }
@@ -236,6 +245,10 @@ public class MainFrame extends JFrame
 
     private void advanceTurn(int advancement)
     {
+        if(turnPanel == -1)
+        {
+            return;
+        }
         initiativePanels.get(turnPanel).setCurrentlyTurn(false);
         turnPanel = ((turnPanel + advancement) % initiativePanels.size() + initiativePanels.size()) % initiativePanels.size();
         InitiativeData data = new InitiativeData();
