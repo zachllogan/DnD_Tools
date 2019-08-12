@@ -176,6 +176,7 @@ public class InitiativePanel
                 }
             }
         };
+        panel.setBorder(new EmptyBorder( 26, 7, 7, 7));
     }
 
     public void setData(InitiativeData data)

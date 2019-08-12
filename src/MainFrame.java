@@ -246,6 +246,7 @@ public class MainFrame extends JFrame
             {
                 turnPanel = ((turnPanel + (advancement > 0 ? 1 : -1) * i) % initiativePanels.size() + initiativePanels.size()) % initiativePanels.size();
                 initiativePanels.get(turnPanel).setCurrentlyTurn(true);
+                initiativesPanel.scrollRectToVisible(initiativePanels.get(turnPanel).getPanel().getBounds());
                 break;
             }
         }
