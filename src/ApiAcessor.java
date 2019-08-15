@@ -30,4 +30,35 @@ public class ApiAcessor
         search.removeUnused();
         return search;
     }
+
+    public static ApiMonster getMonster(String slug)
+    {
+        String json = request("monsters/" + slug + "?format=json");
+        json = json.replaceFirst("\"actions\":\"\",", "");
+        json = json.replaceFirst("\"reactions\":\"\",", "");
+        json = json.replaceFirst("\"lengendary_actions\":\"\",", "");
+        json = json.replaceFirst("\"special_abilities\":\"\",", "");
+        ApiMonster monster = new Gson().fromJson(json, ApiMonster.class);
+        return monster;
+    }
+
+    public static ApiSpell getSpell(String slug)
+    {
+        ApiSpell spell = new Gson().fromJson(request("spells/" + slug + "?format=json"), ApiSpell.class);
+        return spell;
+    }
+
+    public static ApiWeapon getWeapon(String slug)
+    {
+        String json = request("weapons/" + slug + "?format=json");
+        json = json.replaceFirst("\"properties\":\"\",", "");
+        ApiWeapon weapon = new Gson().fromJson(json, ApiWeapon.class);
+        return weapon;
+    }
+
+    public static ApiMagicItem getMagicItem(String slug)
+    {
+        ApiMagicItem magicItem = new Gson().fromJson(request("magicitems/" + slug + "?format=json"), ApiMagicItem.class);
+        return magicItem;
+    }
 }
