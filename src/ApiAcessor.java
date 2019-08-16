@@ -36,7 +36,7 @@ public class ApiAcessor
         String json = request("monsters/" + slug + "?format=json");
         json = json.replaceFirst("\"actions\":\"\",", "");
         json = json.replaceFirst("\"reactions\":\"\",", "");
-        json = json.replaceFirst("\"lengendary_actions\":\"\",", "");
+        json = json.replaceFirst("\"legendary_actions\":\"\",", "");
         json = json.replaceFirst("\"special_abilities\":\"\",", "");
         ApiMonster monster = new Gson().fromJson(json, ApiMonster.class);
         return monster;
