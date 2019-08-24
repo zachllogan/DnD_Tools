@@ -66,7 +66,7 @@ public class SearchDialog extends JDialog
                             public void run()
                             {
                                 ApiSearch search = null;
-                                search = ApiAcessor.search(tc.getText().replace(" ", "_"));
+                                search = ApiAcessor.search(tc.getText().replace(" ", "+"));
                                 searchBox.setEditable(false);
                                 searchBox.removeAllItems();
                                 String[] names = search.getNames();
@@ -139,7 +139,7 @@ public class SearchDialog extends JDialog
         if(confirmed)
         {
             String name  = (String)searchBox.getSelectedItem();
-            ApiSearch search = ApiAcessor.search(name);
+            ApiSearch search = ApiAcessor.search(name.replace(" ", "+"));
             String route = search.getRoute(name);
             if(route != null)
             {

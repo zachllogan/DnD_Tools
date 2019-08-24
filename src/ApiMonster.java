@@ -132,6 +132,8 @@ public class ApiMonster extends ApiThing
 
     public void fillTextPane(JTextPane textPane)
     {
+        textPane.setText("");
+
         final Color paperColor = new Color(241, 228, 197);
         final Color paperEndsColor = new Color(217, 159, 43);
         final Font georgiaFont = new Font("Georgia",0,12);

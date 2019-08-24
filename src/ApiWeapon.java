@@ -18,6 +18,8 @@ public class ApiWeapon extends ApiThing
 
     public void fillTextPane(JTextPane textPane)
     {
+        textPane.setText("");
+
         Color paperColor = new Color(241, 228, 197);
         Color paperEndsColor = new Color(217, 159, 43);
 
