@@ -7,9 +7,8 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 
-public class ApiMagicItem
+public class ApiMagicItem extends ApiThing
 {
-    private String name;
     private String type;
     private String desc;
     private String rarity;

@@ -130,12 +130,12 @@ public class SearchDialog extends JDialog
     }
 
 
-    public Object search()
+    public ApiThing search()
     {
         confirmed = false;
         pack();
         setVisible(true);
-        Object result = null;
+        ApiThing result = null;
         if(confirmed)
         {
             String name  = (String)searchBox.getSelectedItem();

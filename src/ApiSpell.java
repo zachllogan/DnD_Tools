@@ -7,9 +7,8 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 
-public class ApiSpell
+public class ApiSpell extends ApiThing
 {
-    private String name;
     private String desc;
     private String higher_level;
     private String range;

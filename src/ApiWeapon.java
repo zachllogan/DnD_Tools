@@ -7,9 +7,8 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
 
-public class ApiWeapon
+public class ApiWeapon extends ApiThing
 {
-    private String name;
     private String category;
     private String cost;
     private String damage_dice;

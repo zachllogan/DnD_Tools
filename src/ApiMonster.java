@@ -7,9 +7,8 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class ApiMonster
+public class ApiMonster extends ApiThing
 {
-    private String name;
     private String size;
     private String type;
     private String subtype;
