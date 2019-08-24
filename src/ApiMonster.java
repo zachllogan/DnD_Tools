@@ -360,10 +360,13 @@ public class ApiMonster extends ApiThing
             textPane.insertComponent(new thickSeparator());
 
 
-            for (Action ability : special_abilities)
+            if(special_abilities != null)
             {
-                doc.insertString(doc.getLength(), "\n" + ability.name +". ", headerBlack);
-                doc.insertString(doc.getLength(), ability.desc + "\n", standardBlack);
+                for (Action ability : special_abilities)
+                {
+                    doc.insertString(doc.getLength(), "\n" + ability.name + ". ", headerBlack);
+                    doc.insertString(doc.getLength(), ability.desc + "\n", standardBlack);
+                }
             }
 
 
