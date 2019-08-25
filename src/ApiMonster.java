@@ -5,6 +5,7 @@ import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
 import javax.swing.text.*;
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ApiMonster extends ApiThing
@@ -46,7 +47,7 @@ public class ApiMonster extends ApiThing
     private ArrayList<Action> special_abilities;
 
 
-    private static class Movement
+    private static class Movement implements Serializable
     {
         private String walk;
         private String swim;
@@ -55,7 +56,7 @@ public class ApiMonster extends ApiThing
         private String climb;
     }
 
-    private static class Skills
+    private static class Skills implements Serializable
     {
         private String athletics;
         private String acrobatics;
@@ -124,7 +125,7 @@ public class ApiMonster extends ApiThing
         }
     }
 
-    private static class Action
+    private static class Action implements Serializable
     {
         private String name;
         private String desc;
