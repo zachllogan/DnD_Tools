@@ -209,7 +209,7 @@ public class MainFrame extends JFrame
                         break;
                     case "SRD":
                         //showSRD = true;
-                        srdDialog = new SRDDialog(srdDialog, initiativePanels.get(turnPanel));
+                        srdDialog = new SRDDialog(srdDialog, MainFrame.this, initiativePanels.get(turnPanel));
                         srdDialog.pack();
                         srdDialog.setVisible(true);
                 }
@@ -274,7 +274,7 @@ public class MainFrame extends JFrame
         }
         if(srdDialog != null && srdDialog.isVisible())
         {
-            srdDialog = new SRDDialog(srdDialog, initiativePanels.get(turnPanel));
+            srdDialog = new SRDDialog(srdDialog, this, initiativePanels.get(turnPanel));
             srdDialog.pack();
             srdDialog.setVisible(true);
         }
