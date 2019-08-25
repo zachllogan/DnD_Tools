@@ -24,6 +24,12 @@ public class SRDDialog extends JDialog
             setLocation(origin.getLocation());
             origin.dispose();
         }
+        else
+        {
+            Point targetLocation = parent.getLocation();
+            targetLocation.translate(parent.getWidth(), 0);
+            setLocation(targetLocation);
+        }
     }
 
     SRDDialog(Frame parent, InitiativePanel initiativePanel)
@@ -31,6 +37,7 @@ public class SRDDialog extends JDialog
         super(parent);
         setModal(false);
         setDefaultCloseOperation(HIDE_ON_CLOSE);
+        setPreferredSize(new Dimension(500, 690));
 
         add(panel);
         ActionListener listener = new ActionListener()

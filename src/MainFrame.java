@@ -25,7 +25,6 @@ public class MainFrame extends JFrame
 
     private ArrayList<InitiativePanel> initiativePanels;
     private int turnPanel;
-    //private boolean showSRD;
     private SRDDialog srdDialog;
 
     public MainFrame()
@@ -208,10 +207,7 @@ public class MainFrame extends JFrame
                         }
                         break;
                     case "SRD":
-                        //showSRD = true;
-                        srdDialog = new SRDDialog(srdDialog, MainFrame.this, initiativePanels.get(turnPanel));
-                        srdDialog.pack();
-                        srdDialog.setVisible(true);
+                        displaySRDDialog();
                 }
                 MainFrame.this.initiativesPanel.revalidate();
                 MainFrame.this.initiativesPanel.repaint();
@@ -274,9 +270,14 @@ public class MainFrame extends JFrame
         }
         if(srdDialog != null && srdDialog.isVisible())
         {
-            srdDialog = new SRDDialog(srdDialog, this, initiativePanels.get(turnPanel));
-            srdDialog.pack();
-            srdDialog.setVisible(true);
+            displaySRDDialog();
         }
+    }
+
+    private void displaySRDDialog()
+    {
+        srdDialog = new SRDDialog(srdDialog, this, initiativePanels.get(turnPanel));
+        srdDialog.pack();
+        srdDialog.setVisible(true);
     }
 }
