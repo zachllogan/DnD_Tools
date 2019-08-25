@@ -21,9 +21,12 @@ public class MainFrame extends JFrame
     private JButton previousButton;
     private JButton resetButton;
     private JButton duplicateButton;
+    private JButton SRDButton;
 
     private ArrayList<InitiativePanel> initiativePanels;
     private int turnPanel;
+    //private boolean showSRD;
+    private SRDDialog srdDialog;
 
     public MainFrame()
     {
@@ -204,6 +207,11 @@ public class MainFrame extends JFrame
                             }
                         }
                         break;
+                    case "SRD":
+                        //showSRD = true;
+                        srdDialog = new SRDDialog(srdDialog, initiativePanels.get(turnPanel));
+                        srdDialog.pack();
+                        srdDialog.setVisible(true);
                 }
                 MainFrame.this.initiativesPanel.revalidate();
                 MainFrame.this.initiativesPanel.repaint();
@@ -219,6 +227,7 @@ public class MainFrame extends JFrame
         addButton.addActionListener(listener);
         duplicateButton.addActionListener(listener);
         removeButton.addActionListener(listener);
+        SRDButton.addActionListener(listener);
 
 
 
@@ -262,6 +271,12 @@ public class MainFrame extends JFrame
                 initiativesPanel.scrollRectToVisible(initiativePanels.get(turnPanel).getPanel().getBounds());
                 break;
             }
+        }
+        if(srdDialog != null && srdDialog.isVisible())
+        {
+            srdDialog = new SRDDialog(srdDialog, initiativePanels.get(turnPanel));
+            srdDialog.pack();
+            srdDialog.setVisible(true);
         }
     }
 }

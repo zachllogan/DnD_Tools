@@ -113,6 +113,7 @@ public class SearchDialog extends JDialog
     {
         super();
 
+        setPreferredSize(new Dimension(300, 150));
         setModal(true);
         setLayout(new FlowLayout());
 

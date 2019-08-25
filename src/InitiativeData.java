@@ -20,6 +20,19 @@ public class InitiativeData implements Serializable
     }
 
 
+    private ArrayList<ApiThing> statBlocks;
+
+    public ArrayList<ApiThing> getStatBlocks()
+    {
+        return statBlocks;
+    }
+
+    public void setStatBlocks(ArrayList<ApiThing> statBlocks)
+    {
+        this.statBlocks = statBlocks;
+    }
+
+
     private boolean currentlyTurn;
 
     public boolean isCurrentlyTurn()

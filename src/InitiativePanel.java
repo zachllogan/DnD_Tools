@@ -18,6 +18,7 @@ public class InitiativePanel
     public static final DieRoller d20 = new DieRoller(20, 1, 0);
 
 
+    private ArrayList<ApiThing> statBlocks;
     private LinkedHashMap<String, DieRollerSet> dieRollerSets;
 
     private boolean currentlyTurn;
@@ -110,7 +111,6 @@ public class InitiativePanel
         newRollerButton.addActionListener(listener);
         rollButton.addActionListener(listener);
 
-        dieRollerSets = new LinkedHashMap<>();
         PropertyChangeListener listener1 = new PropertyChangeListener()
         {
             @Override
@@ -128,6 +128,8 @@ public class InitiativePanel
         nameField.setCaretColor(new Color(244, 244, 244));
 
 
+        statBlocks = new ArrayList<>();
+        dieRollerSets = new LinkedHashMap<>();
         currentlyTurn = false;
     }
 
@@ -196,6 +198,7 @@ public class InitiativePanel
             dieRollerSets.put(set.name, set);
             rollerSelector.addItem(set.name);
         }
+        statBlocks = data.getStatBlocks();
         update();
     }
 
@@ -212,6 +215,7 @@ public class InitiativePanel
         data.setRollResults(rollResultsArea.getText());
         data.setCurrentlyTurn(currentlyTurn);
         data.setDieRollerSets(new ArrayList<DieRollerSet>(dieRollerSets.values()));
+        data.setStatBlocks(statBlocks);
     }
 
     public boolean isModified(InitiativeData data)
@@ -233,6 +237,8 @@ public class InitiativePanel
         if (rollResultsArea.getText() != null ? !rollResultsArea.getText().equals(data.getRollResults()) : data.getRollResults() != null)
             return true;
         if(!data.getDieRollerSets().equals(new ArrayList<DieRollerSet>(dieRollerSets.values())))
+            return true;
+        if(!data.getStatBlocks().equals(statBlocks))
             return true;
         return false;
     }
@@ -271,5 +277,20 @@ public class InitiativePanel
     public boolean getCurrentlyTurn()
     {
         return currentlyTurn;
+    }
+
+    public void addStatBlock(ApiThing apiThing)
+    {
+        statBlocks.add(apiThing);
+    }
+
+    public void removeStatBlock(int index)
+    {
+        statBlocks.remove(index);
+    }
+
+    public ArrayList<ApiThing> getStatBlocks()
+    {
+        return statBlocks;
     }
 }
